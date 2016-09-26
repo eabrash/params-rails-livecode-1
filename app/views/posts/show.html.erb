@@ -1,0 +1,19 @@
+<h1>Blog post</h1>
+
+<article>
+    <section class="post">
+      <h2><%= @mypost[:title] %></h2>
+      <h3><%= "By: " + @mypost[:author] %></h3>
+      <p><%= @mypost[:body] %></p>
+      <img src="<%=@mypost[:image]%>">
+    </section>
+</article>
+
+<nav>
+  <%if @mypost[:id] != 1%>
+    <li><a href="<%=@mypost[:id]-1%>">Previous</a></li>
+  <%end%>
+  <%if @mypost[:id] != PostsController.allposts.length%>
+    <li><a href="<%=@mypost[:id]+1%>">Next</a></li>
+  <%end%>
+</nav>

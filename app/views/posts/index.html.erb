@@ -1,0 +1,12 @@
+<h1>Welcome to my blog</h1>
+
+<article>
+  <% @posts.each do |post|%>
+    <section class="post">
+      <h2><a href="show/<%=post[:id]%>"> <%= post[:title] %> </a></h2>
+      <h3><%= "By: " + post[:author] %></h3>
+      <p><%= post[:body] %></p>
+      <img src="<%=post[:image]%>">
+    </section>
+  <% end %>
+</article>
