@@ -1,19 +1,12 @@
-<h1>Blog post</h1>
-
-<article>
-    <section class="post">
-      <h2><%= @mypost[:title] %></h2>
-      <h3><%= "By: " + @mypost[:author] %></h3>
-      <p><%= @mypost[:body] %></p>
-      <img src="<%=@mypost[:image]%>">
+<article id="blog-container">
+    <section class="blog-post">
+      <div class="article-header">
+        <h2><%= @mypost[:title] %></h2>
+        <h3><%= "By: " + @mypost[:author] %></h3>
+      </div>
+      <div class="article-body">
+        <p><%= @mypost[:body] %></p>
+        <img src="<%=@mypost[:image]%>">
+      </div>
     </section>
 </article>
-
-<nav>
-  <%if @mypost[:id] != 1%>
-    <li><a href="<%=@mypost[:id]-1%>">Previous</a></li>
-  <%end%>
-  <%if @mypost[:id] != PostsController.allposts.length%>
-    <li><a href="<%=@mypost[:id]+1%>">Next</a></li>
-  <%end%>
-</nav>

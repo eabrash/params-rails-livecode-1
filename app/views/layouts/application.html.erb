@@ -7,8 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="non-footer">
+    <header>
 
-<%= yield %>
+      <h1>Awesome Cat Blog</h1>
+
+      <nav>
+        <ul>
+        <li><%=link_to("Home", index_path)%></li>
+        <li><%=link_to("New", new_path)%></li>
+        <%if @mypost != nil%>
+          <%if @mypost[:id] != 1%>
+            <li><a href="<%=@mypost[:id]-1%>">Previous</a></li>
+          <%end%>
+          <%if @mypost[:id] != PostsController.allposts.length%>
+            <li><a href="<%=@mypost[:id]+1%>">Next</a></li>
+          <%end%>
+          <li><%= link_to("Edit post", edit_path(@mypost[:id]) ) %></li>
+          <li><%= link_to("Delete post", destroy_path(@mypost[:id]), method: :delete) %></li>
+        <%end%>
+        </ul>
+      </nav>
+
+    </header>
+
+    <%= yield %>
+  </div>
+
+  <footer>
+    <p>&copy; 2016 Awesome Cat Blog LLC</p>
+  </footer>
 
 </body>
 </html>

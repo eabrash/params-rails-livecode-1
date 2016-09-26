@@ -1,12 +1,18 @@
-<h1>Welcome to my blog</h1>
+<h1>Welcome to my blog!</h1>
 
-<article>
+<article id="blog-container">
   <% @posts.each do |post|%>
-    <section class="post">
-      <h2><a href="show/<%=post[:id]%>"> <%= post[:title] %> </a></h2>
-      <h3><%= "By: " + post[:author] %></h3>
-      <p><%= post[:body] %></p>
-      <img src="<%=post[:image]%>">
+    <section class="blog-post">
+      <div class = "article-header">
+        <h2>
+          <%= link_to(post[:title], show_path(post[:id]) ) %>
+          <h3><%= "By: " + post[:author] %></h3>
+        </h2>
+      </div>
+      <div class = "article-body">
+        <p><%= post[:body] %></p>
+        <img src="<%=post[:image]%>">
+      </div>
     </section>
   <% end %>
 </article>

@@ -7,11 +7,17 @@ class PostsController < ApplicationController
   def show
     @posts = PostsController.allposts
     @mypost = nil
+
     @posts.each do |post|
       if post[:id] == Integer(params[:id])
         @mypost = post
       end
     end
+
+    if @mypost == nil
+      @mypost = {id: Integer(params[:id]), title: "Did not find", author: "", body: "", image: "http://placekitten.com/400/400"}
+    end
+
   end
 
   def new
