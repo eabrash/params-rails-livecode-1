@@ -133,3 +133,34 @@ footer p {
   padding: 1vh 3vw 2vh 1vw;
   font-size: 1.5vw;
 }
+
+/* Styling of form */
+
+form {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+form label {
+  display: inline-block;
+  margin: 1% 0 1% 0;
+}
+
+form input{
+  display: inline;
+  margin: 2%;
+}
+
+form textarea {
+  width: 100%;
+}
+
+form label:nth-child(5){
+    display: block;
+}
+
+form button{
+  display: block;
+  margin: 2% 0 2% 0;
+}

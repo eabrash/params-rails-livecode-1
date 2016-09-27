@@ -1,2 +1,14 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Create a blog post!</h1>
+<form name="new-post" action="create" method="post">
+  <label for="title">Title:</label>
+  <input type="text" name="title" id="title">
+  <label for="author">Author name:</label>
+  <input type="text" name="author" id="author">
+  <label for="body">Post contents:</label>
+  <textarea id="body" name="body" rows="8" cols="40">
+  </textarea>
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <label for="image">Image:</label>
+  <input type="text" name="image" id="image">
+  <button type="submit">Submit</button>
+</form>
