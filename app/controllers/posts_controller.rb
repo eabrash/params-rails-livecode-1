@@ -2,38 +2,31 @@ class PostsController < ApplicationController
 
   def index
     @welcome_msg = "Hola Amig@!"
-    @posts = PostsController.allposts
+    @posts = Post.all
   end
 
   def show
-    @posts = PostsController.allposts
-    @mypost = nil
-
-    @posts.each do |post|
-      if post[:id] == Integer(params[:id])
-        @mypost = post
-      end
-    end
+    @mypost = Post.find(params[:id].to_i)
 
     if @mypost == nil
-      @mypost = {id: Integer(params[:id]), title: "Did not find", author: "", body: "", image: "http://placekitten.com/400/400"}
+      render :file => 'public/404.html', :status => :not_found
     end
 
   end
 
   def new
-
+    @mypost = Post.new
   end
 
   def create
     @params = params
-    @user_params = user_params
-    @title = user_params[:title]
-    @author = user_params[:author]
-    @body = user_params[:body]
-    @image = user_params[:image]
+    @mypost = Post.new
 
-    @mypost = {id: PostsController.allposts.last[:id]+1, title: @title, author: @author, body: @body, image: @image}
+    @mypost.title = params[:post][:title]
+    @mypost.author = params[:post][:author]
+    @mypost.body = params[:post][:body]
+
+    @mypost.save
 
     # @mypost = params
     # @mypost[:id]=PostsController.allposts.last[:id]+1
@@ -42,31 +35,29 @@ class PostsController < ApplicationController
 
   def edit
 
-    @posts = PostsController.allposts
-    @mypost = nil
-
-    @posts.each do |post|
-      if post[:id] == Integer(params[:id])
-        @mypost = post
-      end
-    end
+    @mypost = Post.find(params[:id])
 
     if @mypost == nil
-      @mypost = {id: Integer(params[:id]), title: "Did not find", author: "", body: "", image: "http://placekitten.com/400/400"}
+      render :file => 'public/404.html', :status => :not_found
     end
 
   end
 
   def update
-    @title = user_params[:title]
-    @author = user_params[:author]
-    @body = user_params[:body]
-    @mypost = {id: params[:id].to_i, title: params[:title], author: params[:author], body: params[:body], image: params[:image]}
-    @mypost = params
-    @mypost[:id] = @mypost[:id].to_i
+
+    @mypost = Post.find(params[:id])
+
+    @mypost.title = params[:patch][:title]
+    @mypost.author = params[:patch][:author]
+    @mypost.body = params[:patch][:body]
+
+    @mypost.save
+
   end
 
   def destroy
+    Post.find(params[:id]).destroy
+    redirect_to action: "index"
   end
 
   def self.allposts

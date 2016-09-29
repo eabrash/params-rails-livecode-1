@@ -122,10 +122,11 @@ footer {
   position: relative;
   background-image: url("bottom_beach-01.png");
   background-size: cover;
-  width: 100vw;
+  width: 97.5vw;
   height: 5vh;
   font-size: 1.5vw;
   margin: 0;
+  padding: 0;
   text-align: right;
 }
 

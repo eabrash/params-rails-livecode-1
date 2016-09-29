@@ -15,13 +15,13 @@
       <nav>
         <ul>
           <li><%=link_to("Home", index_path)%></li>
-          <%if @mypost == nil%>
+          <%if @mypost == nil || @mypost.id == nil%>
             <li><%=link_to("Most recent post", show_path(1))%></li>
           <%else%>
-            <%if @mypost[:id] != 1%>
+            <%if @mypost[:id] != Post.all.first.id%>
               <li><%=link_to("Previous", show_path(@mypost[:id]-1))%></li>
             <%end%>
-            <%if @mypost[:id] != PostsController.allposts.length%>
+            <%if @mypost[:id] != Post.all.last.id %>
               <li><%=link_to("Next", show_path(@mypost[:id]+1))%></li>
             <%end%>
             <li><%= link_to("Edit post", edit_path(@mypost[:id]) ) %></li>

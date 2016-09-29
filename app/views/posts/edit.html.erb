@@ -1,16 +1,14 @@
-<h1>Edit your blog post!</h1>
-<form name="update-post" action="update" method="post">
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title" value="<%= @mypost[:title]%>">
-  <label for="author">Author name:</label>
-  <input type="text" name="author" id="author" value="<%= @mypost[:author]%>">
-  <label for="body">Post contents:</label>
-  <textarea id="body" name="body" rows="8" cols="40">
-    <%= @mypost[:body]%>
-  </textarea>
-  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-  <label for="image">Image:</label>
-  <input type="text" name="image" id="image" value="<%= @mypost[:image]%>">
-  <button type="submit">Submit</button>
-  <input type="hidden" name="_method" value="PUT">
-</form>
+<%= form_for @mypost, as: :patch, url: update_path do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.submit %>
+
+<% end %>

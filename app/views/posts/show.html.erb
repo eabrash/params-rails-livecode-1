@@ -1,12 +1,12 @@
 <article id="blog-container">
     <section class="blog-post">
       <div class="article-header">
-        <h2><%= @mypost[:title] %></h2>
-        <h3><%= "By: " + @mypost[:author] %></h3>
+        <h2><%= @mypost.title %></h2>
+        <h3><%= "By: " + @mypost.author %></h3>
       </div>
       <div class="article-body">
-        <p><%= @mypost[:body] %></p>
-        <img src="<%=@mypost[:image]%>">
+        <p><%= @mypost.body %></p>
       </div>
     </section>
+
 </article>
