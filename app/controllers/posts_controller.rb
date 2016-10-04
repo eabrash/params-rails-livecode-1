@@ -16,6 +16,8 @@ class PostsController < ApplicationController
 
   def new
     @mypost = Post.new
+    @path = "create"
+    @http_verb = "post"
   end
 
   def create
@@ -35,7 +37,9 @@ class PostsController < ApplicationController
 
   def edit
 
+    @path = "update"
     @mypost = Post.find(params[:id])
+    @http_verb = "patch"
 
     if @mypost == nil
       render :file => 'public/404.html', :status => :not_found

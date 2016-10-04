@@ -1,5 +1,5 @@
-
-<%= form_for @mypost, as: :post, url: {action: "create"} do |f| %>
+<%= render partial: "form" %>
+<!-- <%= form_for @mypost, as: :post, url: {action: "create"} do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -12,7 +12,7 @@
 
   <%= f.submit %>
 
-<% end %>
+<% end %> -->
 
 <!-- <h1>Create a blog post!</h1>
 <form name="new-post" action="create" method="post">

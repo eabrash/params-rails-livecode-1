@@ -1,6 +1,4 @@
-
-<%= render partial: "form" %>
-<!-- <%= form_for @mypost, as: :patch, url: update_path do |f| %>
+<%= form_for @mypost, as: @http_verb.to_sym, url: @path, method: @http_verb do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -13,4 +11,4 @@
 
   <%= f.submit %>
 
-<% end %> -->
+<% end %>
